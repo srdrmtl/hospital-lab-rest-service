@@ -18,7 +18,7 @@ You should create a database and import `Dump20181230.sql`.(If you dont understa
 Open project from your best ide (We used Netbeans) and find `application.properties` file
 If you're open project from Netbeans just like there ;
 
-![N|Solid](http://resimag.com/p1/c30b9af64b.png)
+[![N|Spring Boot](http://resimag.com/p1/a494365574e.png)](https://google.com/)
 
 Then, you should change the these database properties
 ```sh

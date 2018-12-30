@@ -1,0 +1,104 @@
+-- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+--
+-- Host: localhost    Database: hospitalrestreporting
+-- ------------------------------------------------------
+-- Server version	5.7.24-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `rapor`
+--
+
+DROP TABLE IF EXISTS `rapor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rapor` (
+  `id` bigint(30) NOT NULL AUTO_INCREMENT,
+  `dosya_no` varchar(15) COLLATE utf8_turkish_ci NOT NULL,
+  `myloblast` int(5) NOT NULL,
+  `promyelosit` int(5) NOT NULL,
+  `myelosit` int(5) NOT NULL,
+  `metamyelosit` int(5) NOT NULL,
+  `comak` int(5) NOT NULL,
+  `parcali` int(5) NOT NULL,
+  `bazofilik_seri` int(5) NOT NULL,
+  `eozinofilik_seri` int(5) NOT NULL,
+  `lenfosit` int(5) NOT NULL,
+  `promonosit` int(5) NOT NULL,
+  `monosit` int(5) NOT NULL,
+  `plazma_hucresi` int(5) NOT NULL,
+  `proeritroblast` int(5) NOT NULL,
+  `bazofilik_erit` int(5) NOT NULL,
+  `polikromalofilik_erit` int(5) NOT NULL,
+  `ortokromantofilik_erit` int(5) NOT NULL,
+  `megakaryositler` varchar(20) COLLATE utf8_turkish_ci NOT NULL,
+  `sellulerite` varchar(20) COLLATE utf8_turkish_ci NOT NULL,
+  `tani` varchar(30) COLLATE utf8_turkish_ci NOT NULL,
+  `rapor_eden` varchar(35) COLLATE utf8_turkish_ci NOT NULL,
+  `rapor` text COLLATE utf8_turkish_ci,
+  `tarih` varchar(20) COLLATE utf8_turkish_ci NOT NULL,
+  `resim1` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `resim2` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `resim3` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rapor`
+--
+
+LOCK TABLES `rapor` WRITE;
+/*!40000 ALTER TABLE `rapor` DISABLE KEYS */;
+INSERT INTO `rapor` VALUES (1,'38452',0,2,21,1,14,24,0,4,10,1,0,0,0,0,5,18,'GÃ¶rÃ¼ldÃ¼','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NormoselÃ¼ler (kismen periferik kan ile dilÃ¼e) kemik iligi, myeloit ve eritroit seride kesintisiz olgunlasma, normoblastik matÃ¼rasyon, primer myelofibroz tanisi olan olgunun kemik iligi, biyopdi donucu ile degerlendirilmesi uygundur','12.01.2016',NULL,NULL,NULL),(2,'57473',4,5,9,10,14,14,0,3,10,0,2,1,0,0,10,18,'NORMAL ORANDA','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON, GRANÃœLOSITIK SERIDE HAFIF SOLA KAYMA','18.01.2016','\\Raporlama_Resimler\\57473\\2\\57473_2_img1.jpg',NULL,NULL),(3,'76107',0,1,24,2,1,33,1,4,30,0,0,3,0,1,0,0,'gÃ¶rÃ¼ldÃ¼','hafif azalmis','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','hafif hiposelÃ¼ler kemik iligi, myeloid ve eritroid seride kesintisiz olgunlasma, normoblastik matÃ¼rasyon, yer yer plazma hÃ¼creleri ve eritrositleri fagosito eden makrofajlar gÃ¶rÃ¼ldÃ¼ ','21.01.2016','\\Raporlama_Resimler\\76107\\3\\76107_3_img1.jpg','\\Raporlama_Resimler\\76107\\3\\76107_3_img2.jpg','\\Raporlama_Resimler\\76107\\3\\76107_3_img3.jpg'),(4,'245880',0,1,13,0,8,6,0,1,6,0,0,0,0,3,18,44,'NORMAL ORANDA','ARTMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','HIPERSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA NORMOBLASTIK MATÃœRASYON, ERITROID SERIDE BELIRGIN HIPERPLAZI VE BAZI ERITROID Ã–NCÃœLLERDE MEGALOBLASTOID DEGISIMLER ','21.01.2016','\\Raporlama_Resimler\\245880\\4\\245880_4_img1.jpg','\\Raporlama_Resimler\\245880\\4\\245880_4_img2.jpg','\\Raporlama_Resimler\\245880\\4\\245880_4_img3.jpg'),(5,'63474',0,7,20,1,17,21,0,0,3,2,1,0,1,2,5,20,'GÃ–RÃœLDÃœ','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOI,D VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON, NON HOCKIN LENFOMA OLDUGU BILINEN OLGUNUN KEMIK ILIGI TUTULUMU AÃ‡ISINDAN KEMIK ILIGI BIYOPSI SONUCU ILE DEGERLENDIRILMESI UYGUNDUR.','21.01.2016','\\Raporlama_Resimler\\63474\\5\\63474_5_img1.jpg','\\Raporlama_Resimler\\63474\\5\\63474_5_img2.jpg','\\Raporlama_Resimler\\63474\\5\\63474_5_img3.jpg'),(6,'293177',2,2,8,1,7,56,0,1,16,1,1,0,0,2,1,2,'DEGERLENDIRILMEMIS','AZALMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','PERIFERIK KAN ILE DILÃœE  KEMIK ILIGI,MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, ERITROID Ã–NCÃœLLERDE NÃœKLEUS SITOPLAZMA GELISIMINDE ASENKRONIZASYON, GRANÃœLOSITER SERI HÃœCRELERINDE HIPOGRANÃœLASYON VE LOBULASYON ANORMALLIKLERI','21.01.2016','\\Raporlama_Resimler\\293177\\6\\293177_6_img1.jpg','\\Raporlama_Resimler\\293177\\6\\293177_6_img2.jpg','\\Raporlama_Resimler\\293177\\6\\293177_6_img3.jpg'),(7,'255258',0,1,23,1,8,20,0,4,14,0,2,2,0,1,4,20,'GÃ–RÃœLDÃœ',', ','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIKILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON,OLGUN LÃ–KOSITER HÃœCRELERDE HIPOGRANÃœLASYONM VE BAZILARINDA HIPOLOGULASYON BAZI ERITROID SERI Ã–NCÃœL HÃœCRELERINDE NUKLEUS DÃœZENSIZLIKLERI GÃ–RÃœLDÃœ ','25.01.2016',NULL,NULL,NULL),(8,'255258',0,1,23,1,8,20,0,4,14,0,2,2,0,1,4,20,'GÃ–RÃœLDÃœ',', ','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIKILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON,OLGUN LÃ–KOSITER HÃœCRELERDE HIPOGRANÃœLASYONM VE BAZILARINDA HIPOLOGULASYON BAZI ERITROID SERI Ã–NCÃœL HÃœCRELERINDE NUKLEUS DÃœZENSIZLIKLERI GÃ–RÃœLDÃœ ','25.01.2016',NULL,NULL,NULL),(9,'294299',0,2,35,2,10,42,3,3,1,0,2,0,0,0,0,0,'DEGERLENDIRILEMEDI','ARTMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','HIPERSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON, MYELOID SERIDE HIPERPLAZI, TÃœM MYELOID SERI BASAMAKLARI GÃ–RÃœLDÃœ','25.01.2016','\\Raporlama_Resimler\\294299\\9\\294299_9_img1.jpg','\\Raporlama_Resimler\\294299\\9\\294299_9_img2.jpg','\\Raporlama_Resimler\\294299\\9\\294299_9_img3.jpg'),(10,'295022',0,2,46,4,15,24,2,1,0,0,1,0,0,2,2,1,'NORMAL ORANDA','ARTMIS','KRONIK MIYELOID LÃ–SEMI ILE UY','Prof. Dr. Burhan TURGUT','HIPERSELÃœLER KEMIK ILIGI, MYELOiD VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON, MYELOID SERININ TÃœM GELISIM BASAMAKLARI GÃ–RÃœLMÃœSTÃœR. Ã–N PLANDA KRONIK MYELOID LÃ–SEMI DÃœSÃœNÃœLMÃœS OLUP SITOGENETIK/MOLEKÃœLER SONUÃ‡LARI ILE BERABER DEGERLENDIRILMESI UYGUNDUR.','27.01.2016','\\Raporlama_Resimler\\295022\\10\\295022_10_img1.jpg','\\Raporlama_Resimler\\295022\\10\\295022_10_img2.jpg','\\Raporlama_Resimler\\295022\\10\\295022_10_img3.jpg'),(11,'201109',14,1,22,0,3,32,1,0,7,0,11,0,1,0,4,4,'DEGERLENDIRILMEMIS','DEGERLENDIRILMEMIS','MIYELODISPLASTIK SENDROM(RAEB-','Prof. Dr. Burhan TURGUT','PERIFERIK KAN ILE KISMEN DILÃœE KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON, BAZI GRANÃœLOSITER SERI HÃœCRELERINDE DISPLAZIK DEGISIKLIKLER GÃ–RÃœLDÃœ(HIPOGRANÃœLASYON, Ã‡EKIRDEK VE SITOPLAZMA GELISIM ASENKRANIZASYON)','28.01.2016',NULL,NULL,NULL),(12,'283225',2,0,7,0,0,0,1,0,25,0,0,0,0,1,22,42,'NORMAL ORANDA','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIKILIGI, ERITROID SERIDE BELIRGIN HIPERPLAZI, BAZI ERITROID Ã–NCÃœLLERDE SITOPLAZMIK UZANTILAR GÃ–RÃœLDÃœ','28.01.2016','\\Raporlama_Resimler\\283225\\12\\283225_12_img1.jpg','\\Raporlama_Resimler\\283225\\12\\283225_12_img2.jpg','\\Raporlama_Resimler\\283225\\12\\283225_12_img3.jpg'),(13,'128678',0,2,27,2,11,28,0,4,7,0,2,0,1,1,3,12,'DEGERLENDIRILEMEDI','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','normoselÃ¼ler kemik iligi, myeloid ve eritroid seride kesintisiz olgunlasma, normoblastik matÃ¼rasyon, kemik iligi biyopsi sonucu ile degerlendirilmesi uygundur','01.02.2016','\\Raporlama_Resimler\\128678\\13\\128678_13_img1.jpg','\\Raporlama_Resimler\\128678\\13\\128678_13_img2.jpg','\\Raporlama_Resimler\\128678\\13\\128678_13_img3.jpg'),(14,'263793',0,2,24,1,13,14,0,4,25,1,2,0,0,1,5,8,'GÃ–RÃœLDÃœ','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON,KML TANISI OLAN IMATINIP TEDAVISININ 6.AYINDAKI HASTANIN SITOGENETIK SONUCLARI ILE DEGERLENDIRILMESI  UYGUNDUR. ','01.02.2016','\\Raporlama_Resimler\\263793\\14\\263793_14_img1.jpg','\\Raporlama_Resimler\\263793\\14\\263793_14_img2.jpg','\\Raporlama_Resimler\\263793\\14\\263793_14_img3.jpg'),(15,'61834',0,0,7,1,0,57,2,3,25,0,3,0,0,0,1,1,'degerlendirilemedi','degerlendirilemedi','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','periferijk kan ile dilÃ¼e kemik iligi, degerlendirme iÃ§in uygun degildir.','01.02.2016',NULL,NULL,NULL),(16,'266067',0,0,23,4,18,27,1,1,13,1,3,0,1,0,1,7,'GÃ–RÃœLDÃœ','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA, NORMOBLASTIK MATÃœRASYON','01.02.2016','\\Raporlama_Resimler\\266067\\16\\266067_16_img1.jpg','\\Raporlama_Resimler\\266067\\16\\266067_16_img2.jpg','\\Raporlama_Resimler\\266067\\16\\266067_16_img3.jpg'),(17,'167466',19,2,26,1,1,0,0,3,30,3,4,0,1,0,6,6,'gÃ¶rÃ¼lmedi','degerlendirilemedi','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','HIPOSELÃœLER KEMIK ILIGI,INMATÃœR MYELOID HÃœCRELERDE ARTIS MYELOID HÃœCRELERDE HIPOGRANÃœLASYON, DISKARYOTIK BULGULAR ERITROID SERIDE BASKILANMA BELIRGIN DISPLAZI','01.02.2016',NULL,NULL,NULL),(18,'131321',0,4,36,4,12,22,0,2,4,0,0,0,1,1,2,12,'NORMAL ORANDA','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESWINTISIZ OLGTUNLASMA NORMOBLASTIK MATÃœRASYON NON HODGKIN LENFOMA OLDUGU BILINE OLGUNUN KEMIK ILIGI TUTULUMU AÃ‡ISINDAN BIYOPSI SONUCU ILE DEGERLENDIRILMESI UYGUNDUR','02.02.2016','\\Raporlama_Resimler\\131321\\18\\131321_18_img1.jpg','\\Raporlama_Resimler\\131321\\18\\131321_18_img2.jpg','\\Raporlama_Resimler\\131321\\18\\131321_18_img3.jpg'),(19,'87222',0,2,22,5,9,14,1,4,14,0,5,1,0,0,7,16,'GÃ–RÃœLDÃœ','NORMAL','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA NORMOBLASTIK MATÃœRASYON, BAZI ERITOID HÃœCRELERDE DISPLAZIK DEGISIKLIKLER ( KARYOREKSIS SITOPLAZMA VE Ã‡EKIRDEK GELISIM ASENKRONIZASYONU)','03.02.2016','\\Raporlama_Resimler\\87222\\19\\87222_19_img1.jpg','\\Raporlama_Resimler\\87222\\19\\87222_19_img2.jpg','\\Raporlama_Resimler\\87222\\19\\87222_19_img3.jpg'),(20,'296076',2,1,27,2,14,20,0,3,14,1,1,0,0,1,2,12,'GÃ–RÃœLDÃœ','ARTMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','hiperselÃ¼ler kemik iligi,  myeloid ve eritroid seride kesintisiz olgunlasma, normoblastik matÃ¼rasyon,incelendigi kadariyla atipik hÃ¼cre gÃ¶rÃ¼lmedi','04.02.2016','\\Raporlama_Resimler\\296076\\20\\296076_20_img1.jpg','\\Raporlama_Resimler\\296076\\20\\296076_20_img2.jpg','\\Raporlama_Resimler\\296076\\20\\296076_20_img3.jpg'),(21,'263073',8,7,17,4,6,7,0,0,16,1,2,1,2,3,9,17,'NORMAL ORANDA','NORMAL','MIYELODISPLAZIK SENDROM RAEB-I','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER KEMIK ILIGI, MYELOID Ã–NCÃœLLERDE ARTIS, ERITROID SERIDE BELIRGIN DISPLAZI( NUKLEUS SITOPLAZMA GELISIMINDE ASENKRANIZASYON INTER SITOPLAZMIK KÃ–PRÃœLENME DISKARYOTIK BULGULAR Ã‡IFT NUKLEUSLU HÃœCRELER MEVCUT)','10.08.2015','\\Raporlama_Resimler\\263073\\21\\263073_21_img1.jpg','\\Raporlama_Resimler\\263073\\21\\263073_21_img2.jpg','\\Raporlama_Resimler\\263073\\21\\263073_21_img3.jpg'),(22,'275383',0,2,48,4,15,26,0,1,2,0,2,0,0,0,0,0,'NORMAL ORANDA','ARTMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','HIPERSELÃœLER KEMIK ILIGI, MYELOID SERIDE HIPERPLAZI (TEDAVI SONRASI GCSF KULLANIMIYLA ILISKILI) MYELOID VE ERITYROID SERIDE KESINTISIZ OLGUNLASMA , NORMOBLASTIK MATÃœRASYON','04.02.2016',NULL,NULL,NULL),(23,'7749',0,5,10,3,11,31,0,2,9,0,4,2,0,0,8,15,'GÃ–RÃœLDÃœ','DEGERLENDIRILEMEDI','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','NORMOSELÃœLER(KISMEN PERIFERIK KAN ILE DILÃœE)KEMIK ILIGI, MYELOID VE ERITROID SERIDE KESINTISIZ OLGUNLASMA NORMOBLASTIK MATÃœRASYON, KML OLDUGU BILINE OLGUNUN MOLEKÃœLER VE  SITOGENETIK SONUÃ‡LARI ILE DEGERLENDIRILMESI UYGUNDUR ','04.02.2016',NULL,NULL,NULL),(24,'281838',2,1,33,3,15,27,0,0,8,0,0,0,2,1,0,8,'AZALMIS','AZALMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','','04.02.2016',NULL,NULL,NULL),(25,'1809',7,6,5,5,10,4,0,2,24,0,2,0,2,2,9,22,'GÃ–RÃœLDÃœ','AZALMIS','RAPORU OKUYUNUZ','Prof. Dr. Burhan TURGUT','HAFIF HIPOSELÃœLER KEMIK ILIGI, MYELOID Ã–NCÃœLLERDE ARTIS, ERITROID HIPERPLAZI, MYELOID SERIDE GRANÃœLASYON BOZUKLUKLARI, DISKARYOTIK BULGULAR, ERITROID SERIDE BELIRGIN DISPLAZI, HIPERKROMATIT MEGAKARYOSITLER GÃ–RÃœLDÃœ','08.02.2016','\\Raporlama_Resimler\\1809\\25\\1809_25_img1.jpg','\\Raporlama_Resimler\\1809\\25\\1809_25_img2.jpg','\\Raporlama_Resimler\\1809\\25\\1809_25_img3.jpg');
+/*!40000 ALTER TABLE `rapor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `uyeler`
+--
+
+DROP TABLE IF EXISTS `uyeler`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `uyeler` (
+  `id` bigint(30) NOT NULL AUTO_INCREMENT,
+  `dosya_no` varchar(20) COLLATE utf8_turkish_ci NOT NULL,
+  `tc_no` varchar(15) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `ad_soyad` varchar(30) COLLATE utf8_turkish_ci NOT NULL,
+  `kan_grubu` varchar(5) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `adres` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `uyeler`
+--
+
+LOCK TABLES `uyeler` WRITE;
+/*!40000 ALTER TABLE `uyeler` DISABLE KEYS */;
+INSERT INTO `uyeler` VALUES (1,'1535','1234','Serdar Mutlu','sss','1234213'),(2,'57473','','PERIHAN YILDIZ','',''),(3,'76107','','kadriye balik','',''),(4,'245880','','TEKIN YANMAZ','',''),(5,'63474','','IBRAHIM SENYAYLA','',''),(6,'293177','','ISA KAHRAMAN','',''),(7,'255258','','ZEHRA YALÃ‡IN','',''),(8,'294299','','SEVGILI BALCI','',''),(9,'295022','','SADI Ã–ZTÃœRK','',''),(10,'201109','','HIKMET YASAR DIRAK','',''),(11,'283225','','GALIP KABADAYI','',''),(12,'128678','','kemal yildiz','',''),(13,'263793','','RAFIYE GÃœNEY','',''),(14,'61834','','hatice tunca','',''),(15,'266067','','NILAY AYSEL','',''),(16,'167466','','ahmet vatansever','',''),(17,'131321','','TAMER YAVUZ','',''),(18,'87222','','MÃœSERREF OCAKLI','',''),(19,'296076','','fahrettin kaya','',''),(20,'263073','','SABAN SENVARDAR','',''),(21,'275383','','MURAT KARIKSIZ','',''),(22,'7749','','YUNUS EMRE SÃœLÃœN','',''),(23,'281838','','feride aktekin','',''),(24,'1809','','ALI YILDIZ','',''),(25,'1535','13369123570','Serdar Mutlu','Arh+','Soguksu Mah'),(26,'123','12345','Serdar Mutlu','Arh+','Hello World'),(27,'1535','13369123570','Serdar Mutlu','Arh+','Soguksu Mahallesi'),(28,'1535','156489','Niraygül Mutlu','Arh+','Soguksu Mahallesi'),(29,'1535','156489','Niraygül Mutlu','Arh+','Soguksu Mahallesi'),(30,'1535','156489','Niraygül Mutlu','Arh+','Soguksu Mahallesi'),(31,'1535','156489','Niraygül Mutlu','Arh+','Soguksu Mahallesi'),(32,'1535','156489','Soner Kabaday?','Arh+','Do?u Soka??'),(33,'1535','1234','Serdar Mutlu','sss','1234213'),(34,'1535','1234','Serdar Mutlu','sss','1234213'),(35,'1535','1234','Serdar Mutlu','sss','1234213'),(36,'1535','1234','Serdar Mutlu','sss','1234213'),(37,'1533','1234','Serdar Mutlu','sss','1234213'),(38,'1578','1234','Ömer BA?CILAR','sss','1234213');
+/*!40000 ALTER TABLE `uyeler` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-12-30  3:41:02

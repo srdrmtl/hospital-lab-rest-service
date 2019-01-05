@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping("user/add")
     public ResponseEntity createUser(@Valid @RequestBody User user) throws ResourceNotFoundException {
         if(repository.findByFileId(user.getFileId()).size() > 0) {
-            throw new ResourceNotFoundException("FileId Saved Before : " + user.getFileId() + " PLEASE CHANGE!");
+            return ResponseEntity.ok("Bu dosya numarası ile daha önce kayıt yapılmıştır!");
         }
         return ResponseEntity.ok(repository.save(user));
     }

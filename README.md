@@ -111,6 +111,20 @@ You can use FileUploadService for upload images , you can also upload multiple i
 | /uploadMultiple | Upload to multiple image(png,jpeg,jpg,gif) | [RequestParam] String files {form-data} | GET |
 | /downloadFile/{fileName} | Download Image from Application Server | String fileName | GET |
 
+## About User Authentication
+--Laborant--
+```sh
+    {
+        "username": "String",
+        "password": "String",
+
+    }
+```
+
+| Api Link | Information | Variable Type | Mapping
+| ------ | ------ | ------ | ------ |
+| /login | login with username and password | Laborant | POST |
+
 
 Important: if you're not save upload response you can't access image later. Because uniqueidgenerator class change filename suddenly. (one in a million maybe ?)
 

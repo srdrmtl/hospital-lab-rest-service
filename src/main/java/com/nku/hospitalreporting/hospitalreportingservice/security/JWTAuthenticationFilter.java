@@ -5,7 +5,6 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nku.hospitalreporting.hospitalreportingservice.model.Laborant;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.EXPIRATION_TIME;
-import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.HEADER_STRING;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.SECRET;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.TOKEN_PREFIX;
 import java.io.IOException;

@@ -1,6 +1,8 @@
 package com.nku.hospitalreporting.hospitalreportingservice.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import org.hibernate.annotations.Type;
 
 
@@ -101,7 +104,9 @@ public class Report implements Serializable {
     private String rapor;
     @Basic(optional = true)
     @Column(name = "tarih")
-    private String tarih;
+    @JsonFormat(pattern="dd/MM/yyyy",locale = "tr-TR", timezone = "Turkey")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date tarih;
     @Column(name = "resim1")
     private String resim1;
     @Column(name = "resim2")
@@ -116,7 +121,7 @@ public class Report implements Serializable {
         this.raporId = raporId;
     }
 
-    public Report(Long raporId, String dosyaNo, int myloblast, int promyelosit, int myelosit, int metamyelosit, int comak, int parcali, int bazofilikSeri, int eozinofilikSeri, int lenfosit, int promonosit, int monosit, int plazmaHucresi, int proeritroblast, int bazofilikErit, int polikromalofilikErit, int ortokromantofilikErit, String megakaryositler, String sellulerite, String tani, String raporEden, String tarih) {
+    public Report(Long raporId, String dosyaNo, int myloblast, int promyelosit, int myelosit, int metamyelosit, int comak, int parcali, int bazofilikSeri, int eozinofilikSeri, int lenfosit, int promonosit, int monosit, int plazmaHucresi, int proeritroblast, int bazofilikErit, int polikromalofilikErit, int ortokromantofilikErit, String megakaryositler, String sellulerite, String tani, String raporEden, Date tarih) {
         this.raporId = raporId;
         this.dosyaNo = dosyaNo;
         this.myloblast = myloblast;
@@ -326,11 +331,11 @@ public class Report implements Serializable {
         this.rapor = rapor;
     }
 
-    public String getTarih() {
+    public Date getTarih() {
         return tarih;
     }
 
-    public void setTarih(String tarih) {
+    public void setTarih(Date tarih) {
         this.tarih = tarih;
     }
 

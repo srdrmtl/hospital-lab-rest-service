@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FileStorageService {
 
-    private final Path fileStorageLocation;
+    private Path fileStorageLocation;
 
     @Autowired
     public FileStorageService(FileStorageProperties fileStorageProperties) {
@@ -36,25 +36,38 @@ public class FileStorageService {
         }
     }
 
-    public String storeFile(MultipartFile file, String uniqueId) {
+    /**
+     * Burada fileid alarak yeni bir dinamik folder yarattık(Daha önce var ise
+     * içine yazıyoruz tabii) ve resim dosyalarını bu şekilde raporların id'sine
+     * göre grupladık.
+     *
+     * @param file
+     * @param fileid
+     * @return
+     */
+    public String storeFile(MultipartFile file, String fileid) {
+        Path dynamicFileLocation = Paths.get(this.fileStorageLocation.toString() + "/" + fileid)
+                .toAbsolutePath().normalize();
 
-        String fileName = uniqueId;
-        
+        try {
+            Files.createDirectories(dynamicFileLocation);
+        } catch (Exception ex) {
+            throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
+        }
+
+        String fileName = file.getOriginalFilename();
+
         switch (file.getContentType()) {
             case "image/png": {
-                fileName += ".png";
                 break;
             }
             case "image/jpeg": {
-                fileName += ".jpeg";
                 break;
             }
             case "image/jpg": {
-                fileName += ".jpg";
                 break;
             }
             case "image/gif": {
-                fileName += ".gif";
                 break;
             }
             default: {
@@ -62,12 +75,10 @@ public class FileStorageService {
             }
         }
         try {
-            // Check if the file's name contains invalid characters
             if (fileName.contains("..")) {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + file.getOriginalFilename());
             }
-            // Copy file to the target location (Replacing existing file with the same name)
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Path targetLocation = dynamicFileLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             return fileName;
@@ -76,9 +87,11 @@ public class FileStorageService {
         }
     }
 
-    public Resource loadFileAsResource(String fileName) {
+    public Resource loadFileAsResource(String fileid, String fileName) {
         try {
-            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            Path dynamicFileLocation = Paths.get(this.fileStorageLocation.toString() + "/" + fileid)
+                    .toAbsolutePath().normalize();
+            Path filePath = dynamicFileLocation.resolve(fileName).normalize();
             Resource resource = new UrlResource(filePath.toUri());
             if (resource.exists()) {
                 return resource;

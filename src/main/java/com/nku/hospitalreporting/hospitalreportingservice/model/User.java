@@ -1,6 +1,8 @@
 package com.nku.hospitalreporting.hospitalreportingservice.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Kullanıcı Model Sınıfı
@@ -39,16 +43,22 @@ public class User implements Serializable {
     
     @Column(name="adres")
     private String address;
+    
+    @Column(name="date")
+    @JsonFormat(pattern="dd/MM/yyyy",locale = "tr-TR", timezone = "Turkey")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date date;
 
     public User() {
     }
 
-    public User(String fileId, String tcId, String name, String blood, String address) {
+    public User(String fileId, String tcId, String name, String blood, String address, Date date) {
         this.fileId = fileId;
         this.tcId = tcId;
         this.name = name;
         this.blood = blood;
         this.address = address;
+        this.date = date;
     }
 
     public String getFileId() {
@@ -103,6 +113,14 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

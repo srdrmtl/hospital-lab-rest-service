@@ -35,12 +35,11 @@ public class FileController {
     @Autowired
     private FileStorageService fileStorageService;
 
-    @PostMapping("/upload")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        String uniqueId = UniqueIdGenerator.generate();//Aynı isimli dosya yüklenmesine karşın bir önlem
-        String fileName = fileStorageService.storeFile(file,uniqueId);
+    @PostMapping("/upload/{fileid}")
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file,@PathVariable("fileid") String fileid) {
+        String fileName = fileStorageService.storeFile(file,fileid);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
+                .path("/downloadFile/"+fileid+"/")
                 .path(fileName)
                 .toUriString();
 
@@ -48,18 +47,18 @@ public class FileController {
                 file.getContentType(), file.getSize());
     }
 
-    @PostMapping("/uploadMultiple")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+    @PostMapping("/uploadMultiple/{fileid}")
+    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,@PathVariable("fileid") String fileid) {
         return Arrays.asList(files)
                 .stream()
-                .map(file -> uploadFile(file))
+                .map(file -> uploadFile(file,fileid))
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+    @GetMapping("/downloadFile/{fileid}/{fileName:.+}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileid,@PathVariable String fileName, HttpServletRequest request) {
 
-        Resource resource = fileStorageService.loadFileAsResource(fileName);
+        Resource resource = fileStorageService.loadFileAsResource(fileid,fileName);
 
         String contentType = null;
         try {

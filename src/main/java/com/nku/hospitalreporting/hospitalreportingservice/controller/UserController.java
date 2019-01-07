@@ -4,7 +4,6 @@ import com.nku.hospitalreporting.hospitalreportingservice.model.User;
 import com.nku.hospitalreporting.hospitalreportingservice.exception.ResourceNotFoundException;
 import com.nku.hospitalreporting.hospitalreportingservice.repository.UserRepository;
 import java.util.List;
-import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +29,11 @@ public class UserController {
         return repository.findAll();
     }
 
+    @GetMapping("user/homeresults")
+    public List<User> getUsers() {
+        return repository.getHomeResults();
+    }
+
     @GetMapping("user/{id}")
     public User getUser(@PathVariable(value = "id") Long id) throws ResourceNotFoundException {
         User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
@@ -38,7 +42,7 @@ public class UserController {
 
     @PostMapping("user/add")
     public ResponseEntity createUser(@Valid @RequestBody User user) throws ResourceNotFoundException {
-        if(repository.findByFileId(user.getFileId()).size() > 0) {
+        if (repository.findByFileId(user.getFileId()).size() > 0) {
             return ResponseEntity.ok("Bu dosya numarası ile daha önce kayıt yapılmıştır!");
         }
         return ResponseEntity.ok(repository.save(user));

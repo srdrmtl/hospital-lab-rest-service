@@ -11,4 +11,5 @@ public interface UserRepositoryCustom {
 
     public List<User> searchUsers(String searchText);
     public List<User> findByFileId(String fileId);
+    public List<User> getHomeResults();
 }

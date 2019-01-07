@@ -12,5 +12,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryCustom{
     
-    public List<User> searchUsers(String searchText);
 }

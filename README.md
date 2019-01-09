@@ -40,7 +40,8 @@ After this, if everything is okey you can access to link and see some json data 
         "tcId": "String",
         "name": "String",
         "blood": "String(Max 4 Character)",
-        "address": "String"
+        "address": "String",
+        "date":Date Example("11/01/2019")
     }
 ```
 ### User Api Table
@@ -48,6 +49,7 @@ After this, if everything is okey you can access to link and see some json data 
 | ------ | ------ | ------ | ------ |
 | /user/{id} | Get User Information with Id Parameter from database  | [PathVariable] Long id | GET |
 | /user/all | Get All Users from database | No Parameter | GET |
+| /user/homeresults | Get passed user list (2 Weeks) | No Parameter | GET |
 | /user/find/{searchText} | Search in all users with search key | [PathVariable] String searchText | GET |
 | /user/fileid/{fileid} | Get User with fileid parameters from database | [PathVariable] String fileid | GET |
 | /user/add | Save User | User | POST |
@@ -83,7 +85,7 @@ Note: Im sorry for this model used to turkish variable names.
         "tani": "String",
         "raporEden": "String",
         "rapor": "String",
-        "tarih": "String",
+        "tarih": Date Example("11/01/2019")
         "resim1": "String(Download Link)",
         "resim2": "String(Download Link)",
         "resim3": "String(Downdload Link)"
@@ -107,24 +109,28 @@ You can use FileUploadService for upload images , you can also upload multiple i
 
 | Api Link | Information | Variable Type | Mapping
 | ------ | ------ | ------ | ------ |
-| /upload | Upload to single image(png,jpeg,jpg,gif) | [RequestParam] String file {form-data} | POST |
-| /uploadMultiple | Upload to multiple image(png,jpeg,jpg,gif) | [RequestParam] String files {form-data} | GET |
-| /downloadFile/{fileName} | Download Image from Application Server | String fileName | GET |
+| /upload/{fileId} | Upload to single image(png,jpeg,jpg,gif) | [RequestParam] String file {form-data},String fileId| POST |
+| /uploadMultiple/{fileId} | Upload to multiple image(png,jpeg,jpg,gif) | [RequestParam] String files {form-data}, String fileId| GET |
+| /downloadFile/{fileId}/{fileName} | Download Image from Application Server | String fileName, String fileId | GET |
 
-## About User Authentication
---Laborant--
+## Web Security and Other Informations
+We used to jwt(java web token) for security. Need to be new role for security and we created Laborant(lab worker) model;
+
+### Laborant Model
 ```sh
     {
         "username": "String",
-        "password": "String",
+        "password": "String" //This column hashed sha256.
 
     }
 ```
 
+### Security Services
+
 | Api Link | Information | Variable Type | Mapping
 | ------ | ------ | ------ | ------ |
 | /login | login with username and password | Laborant | POST |
+| /laborant/register | Register | Laborant | POST |
 
-
-Important: if you're not save upload response you can't access image later. Because uniqueidgenerator class change filename suddenly. (one in a million maybe ?)
+!Update : Changed the image upload and download service, you can download images to real names.
 

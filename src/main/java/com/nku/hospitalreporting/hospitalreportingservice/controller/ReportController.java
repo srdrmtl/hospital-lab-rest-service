@@ -1,6 +1,7 @@
 package com.nku.hospitalreporting.hospitalreportingservice.controller;
 
 import com.nku.hospitalreporting.hospitalreportingservice.exception.ResourceNotFoundException;
+import com.nku.hospitalreporting.hospitalreportingservice.model.ErrorDto;
 import com.nku.hospitalreporting.hospitalreportingservice.model.Report;
 import com.nku.hospitalreporting.hospitalreportingservice.repository.ReportRepository;
 import java.util.List;
@@ -74,14 +75,15 @@ public class ReportController {
     public List<Report> searchReports(@PathVariable(value = "searchText") String searchText) {
         return repository.searchReports(searchText);
     }
-    
+
     @GetMapping("report/fileid/{fileId}")
     public ResponseEntity getReportWithFileId(@PathVariable(value = "fileId") String fileId) {
         try {
             Report report = repository.findByFileId(fileId).get(0);
             return ResponseEntity.ok(report);
         } catch (Exception e) {
-            return ResponseEntity.ok(false);
+            ErrorDto dto = new ErrorDto(Boolean.FALSE, fileId + " numaralı rapor bulunamadı.");
+            return ResponseEntity.ok(dto);
         }
     }
 }

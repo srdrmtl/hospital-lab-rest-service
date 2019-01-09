@@ -3,11 +3,13 @@ package com.nku.hospitalreporting.hospitalreportingservice.security;
 import com.auth0.jwt.JWT;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.nku.hospitalreporting.hospitalreportingservice.model.ErrorDto;
 import com.nku.hospitalreporting.hospitalreportingservice.model.Laborant;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.EXPIRATION_TIME;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.SECRET;
-import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.TOKEN_PREFIX;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.FilterChain;
@@ -61,8 +63,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject(((User) auth.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
-        //res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-        res.getWriter().write(TOKEN_PREFIX + token);
+        ErrorDto dto = new ErrorDto(Boolean.TRUE, token);
+        String json = new Gson().toJson(dto);//servlet response'da bu şekilde çevirebildim.
+        PrintWriter out = res.getWriter();
+        res.setContentType("application/json");
+        res.setCharacterEncoding("UTF-8");
+        out.print(json);
         res.getWriter().flush();
         res.getWriter().close();
     }

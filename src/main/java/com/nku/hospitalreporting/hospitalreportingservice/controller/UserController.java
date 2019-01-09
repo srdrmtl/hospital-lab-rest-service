@@ -2,6 +2,7 @@ package com.nku.hospitalreporting.hospitalreportingservice.controller;
 
 import com.nku.hospitalreporting.hospitalreportingservice.model.User;
 import com.nku.hospitalreporting.hospitalreportingservice.exception.ResourceNotFoundException;
+import com.nku.hospitalreporting.hospitalreportingservice.model.ErrorDto;
 import com.nku.hospitalreporting.hospitalreportingservice.repository.UserRepository;
 import java.util.List;
 import javax.validation.Valid;
@@ -43,13 +44,14 @@ public class UserController {
     @PostMapping("user/add")
     public ResponseEntity createUser(@Valid @RequestBody User user) throws ResourceNotFoundException {
         if (repository.findByFileId(user.getFileId()).size() > 0) {
-            return ResponseEntity.ok("Bu dosya numarası ile daha önce kayıt yapılmıştır!");
+            ErrorDto dto = new ErrorDto(Boolean.FALSE, user.getFileId() + " numaralı rapor daha önce kaydedilmiş.");
+            return ResponseEntity.ok(dto);
         }
         return ResponseEntity.ok(repository.save(user));
     }
 
     @PutMapping("user/update/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long id, @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
+    public ResponseEntity updateUser(@PathVariable(value = "id") Long id, @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
         User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
         user.setAddress(userDetails.getAddress());
         user.setBlood(userDetails.getBlood());
@@ -71,7 +73,8 @@ public class UserController {
             User user = repository.findByFileId(fileId).get(0);
             return ResponseEntity.ok(user);
         } catch (Exception e) {
-            return ResponseEntity.ok(false);
+            ErrorDto dto = new ErrorDto(Boolean.FALSE, fileId + " numaralı rapor bulunamadı.");
+            return ResponseEntity.ok(dto);
         }
     }
 

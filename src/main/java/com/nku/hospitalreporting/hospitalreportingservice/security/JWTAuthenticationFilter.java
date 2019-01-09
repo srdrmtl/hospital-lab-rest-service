@@ -8,6 +8,7 @@ import com.nku.hospitalreporting.hospitalreportingservice.model.ErrorDto;
 import com.nku.hospitalreporting.hospitalreportingservice.model.Laborant;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.EXPIRATION_TIME;
 import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.SECRET;
+import static com.nku.hospitalreporting.hospitalreportingservice.security.SecurityConstants.TOKEN_PREFIX;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject(((User) auth.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
-        ErrorDto dto = new ErrorDto(Boolean.TRUE, token);
+        ErrorDto dto = new ErrorDto(Boolean.TRUE, TOKEN_PREFIX + token);
         String json = new Gson().toJson(dto);//servlet response'da bu şekilde çevirebildim.
         PrintWriter out = res.getWriter();
         res.setContentType("application/json");
